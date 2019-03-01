@@ -1,0 +1,9 @@
+dist/
+.temp/
+.rn_temp/
+node_modules/
+seeders/
+.DS_Store
+.env
+.env.test
+package-lock.json
