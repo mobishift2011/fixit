@@ -54,6 +54,11 @@ module.exports = {
       gender: {
         type: Sequelize.INTEGER
       },
+      identity: Sequelize.STRING,
+      experience: Sequelize.STRING,
+      certificates: Sequelize.STRING,
+      skills: Sequelize.STRING,
+      area: Sequelize.STRING,
       state: {
         type: Sequelize.INTEGER,
         allowNull: false,

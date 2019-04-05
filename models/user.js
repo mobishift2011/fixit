@@ -46,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
           isIn: [Object.keys(enums.genderChoices)]
         }
       },
+      identity: DataTypes.STRING,
+      experience: DataTypes.STRING,
+      certificates: DataTypes.STRING,
+      skills: DataTypes.STRING,
+      area: DataTypes.STRING,
       state: {
         type: DataTypes.INTEGER,
         allowNull: false,

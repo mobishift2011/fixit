@@ -1,7 +1,5 @@
 # Fixit
 
-------
-
 ## 描述
 
 **Fixit** 服务端程序
@@ -13,7 +11,7 @@
 
 Ethan Huang <mobishift2011@gmail.com>
 
-##运行
+## 运行
 
 * 进入目录： ```cd fixit```
 
