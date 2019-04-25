@@ -75,12 +75,27 @@ module.exports = (sequelize, DataTypes) => {
       lastLogin: {
         type: DataTypes.DATE,
         field: 'last_login'
+      },
+      service_level: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: 'A',
+        validate: {
+          isIn: [Object.keys(enums.userLevelChoices)]
+        }
+      },
+      service_exp: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
       }
     },
     {
       tableName: 'user'
     }
   );
-  user.associate = function (models) { };
+  user.associate = function (models) {
+    user.belongsTo(models.shop);
+  };
   return user;
 };

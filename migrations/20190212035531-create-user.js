@@ -75,6 +75,23 @@ module.exports = {
       },
       last_login: {
         type: Sequelize.DATE
+      },
+      service_level: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        defaultValue: 'A',
+      },
+      service_exp: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      shop_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'shop',
+          key: 'id'
+        }
       }
     });
   },

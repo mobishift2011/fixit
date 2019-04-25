@@ -66,6 +66,8 @@ module.exports = {
       supplier: Sequelize.STRING,
       warranty: Sequelize.INTEGER.UNSIGNED,
       installed_at: Sequelize.DATE,
+      warranty_repair_at: Sequelize.DATE,
+      warranty_maintenance_at: Sequelize.DATE,
       sort: {
         type: Sequelize.INTEGER,
         allowNull: false,

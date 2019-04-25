@@ -31,6 +31,8 @@ module.exports = (sequelize, DataTypes) => {
       supplier: DataTypes.STRING,
       warranty: DataTypes.INTEGER.UNSIGNED, // 保固期(月)
       installed_at: DataTypes.DATE,
+      warranty_repair_at: DataTypes.DATE,
+      warranty_maintenance_at: DataTypes.DATE,
       sort: {
         type: DataTypes.INTEGER,
         allowNull: false,
