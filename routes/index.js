@@ -1,6 +1,7 @@
 const brandRoutes = require('./brand')
 const categoryRoutes = require('./category')
 const productRoutes = require('./product')
+const shopRoutes = require('./shop')
 const userRoutes = require('./user')
 const orderRouts = require('./order')
 
@@ -15,6 +16,7 @@ module.exports = [
     ...brandRoutes,
     ...categoryRoutes,
     ...productRoutes,
+    ...shopRoutes,
     ...userRoutes,
     ...orderRouts
 ]

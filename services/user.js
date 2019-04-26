@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const config = require('../config');
 const models = require('../models');
 
-const profileAttr = ['id', 'name', 'mobile', 'email', 'avatar', 'gender', 'state', 'role', 'last_login', 'shop_id'];
+const profileAttr = ['id', 'name', 'mobile', 'email', 'avatar', 'gender', 'state', 'role', 'last_login', 'shop_id', 'service_level', 'service_exp'];
 
 const setPassword = (data) => {
     return bcrypt.hashSync(data, 12);
