@@ -5,12 +5,22 @@ const Group = 'order';
 const GroupName = '订单';
 const V1 = `/api/v1/${Group}`;
 
+const permCond = function (user) {
+    if (user.role == 1) {
+        return { client_user_id: user.id }
+    } else {
+        return { service_user_id: user.id }
+    }
+}
+
+
 module.exports = [
     {
         method: 'GET',
         path: V1,
         handler: (request, reply) => {
             const data = orderService.list({
+                where: permCond(request.auth.credentials),
                 order: [['created_at', 'DESC']]
             });
             reply(data);

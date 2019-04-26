@@ -1,4 +1,6 @@
+const Op = require('sequelize').Op;
 const auth = require('../common/auth');
+const prodService = require('../services/product');
 const brandService = require('../services/brand');
 
 const Group = 'brand';
@@ -9,8 +11,17 @@ module.exports = [
     {
         method: 'GET',
         path: V1,
-        handler: (request, reply) => {
-            const data = brandService.list();
+        handler: async (request, reply) => {
+            const user = request.auth.credentials
+            const prods = await prodService.list({ where: { shop_id: user.shop_id } })
+            const brandIds = prods.map(e => e.brand_id);
+            const data = brandService.list({
+                where: {
+                    id: {
+                        [Op.in]: brandIds
+                    }
+                }
+            });
             reply(data);
         },
         config: {

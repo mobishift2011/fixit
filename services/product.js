@@ -24,8 +24,9 @@ module.exports = {
         });
     },
     models: async (options = {}) => {
+        const $where = { model: { [Op.ne]: null } };
         options = Object.assign(options || {}, {
-            where: { model: { [Op.ne]: null } },
+            where: Object.assign($where, options.where || {}),
             attributes: ['model'],
             group: 'model',
             raw: true
@@ -34,8 +35,9 @@ module.exports = {
         return result.map(e => e.model);
     },
     sns: async (options = {}) => {
+        const $where = { sn: { [Op.ne]: null } };
         options = Object.assign(options || {}, {
-            where: { sn: { [Op.ne]: null } },
+            where: Object.assign($where, options.where || {}),
             attributes: ['sn'],
             group: 'sn',
             raw: true

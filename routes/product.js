@@ -34,7 +34,8 @@ module.exports = [
             const query = request.query;
             const index = query.index;
             delete query.index;
-
+            query.shop_id = request.auth.credentials.shop_id;
+            
             let data = await prodService.list({ where: query, raw: true });
             if (index == 1) {
                 data = indexList(data);
@@ -68,8 +69,11 @@ module.exports = [
         method: 'GET',
         path: `${V1}/model`,
         handler: async (request, reply) => {
-            const { brand_id, category_id } = request.payload;
-            const data = await prodService.models({ brand_id, category_id });
+            const user = request.auth.credentials;
+            const { brand_id, category_id } = request.query;
+            const data = await prodService.models({
+                where: { brand_id, category_id, shop_id: user.shop_id }
+            });
             reply(data)
         },
         config: {
@@ -84,8 +88,11 @@ module.exports = [
         method: 'GET',
         path: `${V1}/sn`,
         handler: async (request, reply) => {
-            const { brand_id, category_id, model } = request.payload;
-            const data = await prodService.sns({ brand_id, category_id, model });
+            const user = request.auth.credentials;
+            const { brand_id, category_id, model } = request.query;
+            const data = await prodService.sns({
+                where: { brand_id, category_id, model, shop_id: user.shop_id }
+            });
             reply(data)
         },
         config: {

@@ -39,10 +39,8 @@ module.exports = [
     {
         method: 'GET',
         path: `${V1}/profile`,
-        handler: async (request, reply) => {
-            const userId = request.auth.credentials.id
-            const profile = await userService.profile(userId)
-            reply(profile)
+        handler: (request, reply) => {
+            reply(request.auth.credentials)
         },
         config: {
             tags: ['api', GroupName],
